@@ -24,18 +24,17 @@ module.exports = class extends Generator {
   }
 
   default() {
-    console.log(this.props);
     if (this.props.pluginName.startsWith('opensphere-plugin-')) {
       this.props.pluginName = this.props.pluginName.substring(
         'opensphere-plugin-'.length
       );
     }
-    console.log(this.props);
   }
 
   writing() {
     var pluginTemplates = [
       'LICENSE',
+      'karma.conf.js',
       'modernizr.config.json',
       'package.json',
       'config/settings.json',
@@ -53,7 +52,20 @@ module.exports = class extends Generator {
     srcFiles.forEach(function(srcFile) {
       this.fs.copyTpl(
         this.templatePath('src/' + srcFile),
-        this.destinationPath('src/plugin/' + this.props.pluginName + '/' + srcFile),
+        this.destinationPath(
+          'src/plugin/' + this.props.pluginName + '/' + this.props.pluginName + srcFile
+        ),
+        this.props
+      );
+    }, this);
+
+    var testFiles = ['plugin.test.js'];
+    testFiles.forEach(function(testFile) {
+      this.fs.copyTpl(
+        this.templatePath('test/' + testFile),
+        this.destinationPath(
+          'test/plugin/' + this.props.pluginName + '/' + this.props.pluginName + testFile
+        ),
         this.props
       );
     }, this);
