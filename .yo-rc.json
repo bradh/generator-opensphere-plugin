@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Brad Hards",
+      "authorEmail": "bradh@frogmouth.net",
+      "authorUrl": ""
+    }
+  }
+}
