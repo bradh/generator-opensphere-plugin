@@ -11,6 +11,6 @@ describe('generator-opensphere-plugin:app', () => {
   });
 
   it('creates files', () => {
-    assert.file(['dummyfile.txt']);
+    assert.file(['LICENSE']);
   });
 });
