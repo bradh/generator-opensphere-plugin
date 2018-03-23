@@ -14,6 +14,21 @@ module.exports = class extends Generator {
         name: 'pluginName',
         message: 'Your plugin name',
         default: slugify(this.appname)
+      },
+      {
+        type: 'list',
+        name: 'pluginType',
+        message: 'What kind of plugin?',
+        choices: [
+          'Minimal example',
+          'Basic Window',
+          'XML File Source',
+          'Other File Source',
+          'Server Source'
+        ],
+        filter: function(val) {
+          return slugify(val.toLowerCase());
+        }
       }
     ];
 

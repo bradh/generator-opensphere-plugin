@@ -1,6 +1,6 @@
 {
   "name": "generator-opensphere-plugin",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Yeoman generator for OpenSphere plugins",
   "homepage": "",
   "author": {
@@ -8,14 +8,9 @@
     "email": "bradh@frogmouth.net",
     "url": ""
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "opensphere",
-    "yeoman-generator"
-  ],
+  "keywords": ["opensphere", "yeoman-generator"],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
@@ -46,20 +41,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -73,9 +59,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": "bradh/generator-opensphere-plugin",
   "license": "Apache-2.0"
