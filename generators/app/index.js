@@ -67,7 +67,8 @@ module.exports = class extends Generator {
       'modernizr.config.json',
       'package.json',
       'config/settings.json',
-      'views/README.md'
+      'views/README.md',
+      'onboarding/README.md'
     ];
     pluginTemplates.forEach(function(templateFile) {
       this.fs.copyTpl(
