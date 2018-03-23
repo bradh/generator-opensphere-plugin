@@ -44,6 +44,20 @@ module.exports = class extends Generator {
         'opensphere-plugin-'.length
       );
     }
+    if (this.props.pluginType === 'minimal-example') {
+      this.config.set({ srcFiles: ['plugin'], testFiles: ['plugin.test'] });
+    } else if (this.props.pluginType === 'basic-window') {
+      this.config.set({ srcFiles: ['plugin'], testFiles: ['plugin.test'] });
+    } else if (this.props.pluginType === 'xml-file-source') {
+      this.config.set({ srcFiles: ['plugin'], testFiles: ['plugin.test'] });
+    } else if (this.props.pluginType === 'other-file-source') {
+      this.config.set({ srcFiles: ['plugin'], testFiles: ['plugin.test'] });
+    } else if (this.props.pluginType === 'server-source') {
+      this.config.set({ srcFiles: ['plugin'], testFiles: ['plugin.test'] });
+    } else {
+      // Some kind of assert?
+      this.config.set({ srcFiles: [], testFiles: [] });
+    }
   }
 
   writing() {
@@ -63,23 +77,31 @@ module.exports = class extends Generator {
       );
     }, this);
 
-    var srcFiles = ['plugin.js'];
-    srcFiles.forEach(function(srcFile) {
+    this.config.get('srcFiles').forEach(function(srcFile) {
       this.fs.copyTpl(
-        this.templatePath('src/' + srcFile),
+        this.templatePath('src/' + srcFile + '.ejs'),
         this.destinationPath(
-          'src/plugin/' + this.props.pluginName + '/' + this.props.pluginName + srcFile
+          'src/plugin/' +
+            this.props.pluginName +
+            '/' +
+            this.props.pluginName +
+            srcFile +
+            '.js'
         ),
         this.props
       );
     }, this);
 
-    var testFiles = ['plugin.test.js'];
-    testFiles.forEach(function(testFile) {
+    this.config.get('testFiles').forEach(function(testFile) {
       this.fs.copyTpl(
-        this.templatePath('test/' + testFile),
+        this.templatePath('test/' + testFile + '.ejs'),
         this.destinationPath(
-          'test/plugin/' + this.props.pluginName + '/' + this.props.pluginName + testFile
+          'test/plugin/' +
+            this.props.pluginName +
+            '/' +
+            this.props.pluginName +
+            testFile +
+            '.js'
         ),
         this.props
       );
